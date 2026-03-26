@@ -1,0 +1,28 @@
+# The Hugging Face model to fine-tune
+model: "Qwen/Qwen2.5-Coder-1.5B-Instruct"
+
+# Training dataset parameters
+data: "."
+train: true
+# Validation configuration
+val_batches: 2
+
+# LoRA hyperparameters
+lora_layers: 8 # Number of transformer layers to apply LoRA
+lora_parameters:
+  rank: 8
+  alpha: 16
+  dropout: 0.05
+  scale: 10.0
+
+# Training parameters
+batch_size: 1
+iters: 20 # Low number of iterations to demonstrate the pipeline quickly
+lr: 1e-4
+steps_per_report: 5
+steps_per_eval: 10
+save_every: 20
+
+# Output adapters
+adapter_path: "adapters"
+max_seq_length: 512
